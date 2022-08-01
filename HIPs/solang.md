@@ -45,7 +45,8 @@ Currently, Solang targets the following blockchains:
 - [Ethereum ewasm](https://ewasm.readthedocs.io)
 
 At the time of writing, these chains are the 2nd, 9th, and 11th by market
-capitalization according to [coinmarketcap](https://coinmarketcap.com/).
+capitalization according [coinmarketcap](https://coinmarketcap.com/) (the coins
+are listed by market cap).
 
 Note that public Ethereum does not currently support ewasm, however work
 for ewasm support on Ethereum is underway.
@@ -168,7 +169,10 @@ Parity Tech:
 
 The source code is hosted on [github](https://github.com/hyperledger-labs/Solang)
 and  there is [documentation](https://Solang.readthedocs.io/en/latest/).
-There is documentation on how to [run Solang](https://Solang.readthedocs.io/en/latest/running.html).
+There is documentation on how to [run Solang on the command line](https://Solang.readthedocs.io/en/latest/running.html),
+and blockchain specific instructions for [Solana](https://solang.readthedocs.io/en/latest/targets/solana.html),
+[Substrate](https://solang.readthedocs.io/en/latest/targets/substrate.html), and
+[Burrow](https://solang.readthedocs.io/en/latest/targets/burrow.html).
 
 # References
 
@@ -179,3 +183,6 @@ N/A
 The goal of Solang is to bring the Solidity language to as many blockchains as
 possible. Writing a production quality compiler is a complex task, so colaboration
 between blockchains will be hugely beneficial.
+
+The success of the project can be measured by the number of projects that
+use Solang as a compiler.

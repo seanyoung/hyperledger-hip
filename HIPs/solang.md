@@ -153,7 +153,7 @@ is then linked using the LLVM linker into the final file.
 
 There is a mock implementation of the Solana, Substrate, ewasm which are used
 for many tests. There are also integration tests which use the actual chain
-fro end-to-end testing: compile solidity, deploy it to a node of the blockchain
+for end-to-end testing: compile solidity, deploy it to a node of the blockchain
 (running in a container), and call various contract functions.
 
 # Effort and Resources

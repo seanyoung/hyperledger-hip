@@ -21,20 +21,20 @@ Hyperledger Solang v0.1.12
 # Abstract
 
 Solang is a portable compiler for the Solidity language that targets Solana,
-Substrate (Polkadot), and ewasm. It is written in rust, and uses the LLVM
-libraries as a compiler backend.
+Substrate (Polkadot), and ewasm. It is written in Rust, and leverages the LLVM
+infrastructure for the compiler backend.
 
 # Context
 
 The Solidity language is the [most popular programming language for smart
 contracts](https://101blockchains.com/smart-contract-programming-languages/).
 However, the existing Solidity compiler only targets the Ethereum
-blockchain. The Solang project aims to make Solidity available for other
-blockchains.
+virtual machine. The Solang project aims to make Solidity available for other
+blockchains, and focuses on maintaining compatibility with Solc, so that developers can use their existing codebase for blockchains other than Ethereum with minimanl modifications.
 
 The purpose of Solang is two-fold: first of all, developers with solidity
-language knowledgecan develop new smart contracts for non-ethereum blockchains
-in solidity, so they do not have to learn a new language.
+language knowledge can develop new smart contracts for non-ethereum blockchains
+in Solidity, so they do not have to learn a new language.
 Secondly, there is a large amount of existing Solidity contracts available,
 which can be recompiled for a different blockchain.
 
@@ -53,7 +53,7 @@ for ewasm support on Ethereum is underway.
 
 Any other blockchain that wishes to have Solidity language support is welcome to a
 new target to the Solang project. The cosmos blockchain
-[grant foundation](https://interchain.io/) has said they would
+[grant foundation](https://interchain.io/) has said it would
 [support a grant for adding CosmWasm support](https://github.com/hyperledger-labs/Solang/issues/582).
 
 # Dependent Projects
@@ -64,15 +64,15 @@ None
 
 The existing [Ethereum Solidity compiler](https://github.com/ethereum/solidity/)
 is written in C++ and does not use modern tooling like parser generators or the
-LLVM libraries for code optimization and generation.
+LLVM infrastructure for code optimization and generation.
 
 A new compiler, written from scratch, like Solang, offers the following advantages:
 
-- Can target any blockchain, not just Ethereum
-- Can generate efficient code using world-class LLVM compiler backend
-- Language can be extended to support blockchain specific features
-- Only frontend compiler required: parsing, semantic analysis and intermediate
-  codegen needed.
+- It can target any blockchain, not just Ethereum.
+- It generates efficient code using the world-class LLVM compiler backend.
+- The Solidity language can be extended to support blockchain specific features.
+- The development is streamlined to only a frontend compiler, which deals with parsing, semantic analysis and intermediate
+  code generation.
 
 There is a similar Solidity compiler project, called
 [SOLL](https://github.com/second-state/soll)
@@ -80,6 +80,10 @@ but development has stalled on this project. There is also the
 [Ethereum Solidity compiler](https://github.com/ethereum/solidity/).
 
 # Status
+
+Solang can virtually parse anything Solc can and generate code for the majority of Solidity construcuts. The maintainers are focused on providing full compatibility for Solidity on both Solana and Polkadot blockchains. There is a tentative roadmap available on the repository's [README file](https://github.com/hyperledger-labs/solang#tentative-roadmap).
+
+Improvements in performance and code generation are gradual and the project has mainly attracted Hyperledger mentees to work on such tasks.
 
 Solang would move into incubation, if approved.
 
@@ -91,7 +95,7 @@ supports.
 
 Solang is a compiler, and does not know anything about building transaction
 or deploying contracts. The compiler merely outputs the binary contract and
-the metadata; other, blockchain specific tooling is required to interact
+the metadata; other blockchain specific tooling is required to interact
 with the contract on the blockchain.
 
 The compiler has the following stages:
@@ -101,8 +105,8 @@ The compiler has the following stages:
 The parser using an LR(1) parser generator and a hand-written lexer. This
 component has been spun out into its own rust crate
 [Solang-parser](https://crates.io/crates/Solang-parser).
-The parser has been tested again a huge corpus of Solidity test contracts,
-including the ethereum solidity's own testsuite. This runs on Solang CI.
+The parser has been tested against a huge corpus of Solidity test contracts,
+including the ethereum solidity's own testsuite, which runs on Solang CI.
 
 This crate is being
 used by Foundry's [forge fmt](https://github.com/foundry-rs/foundry/tree/master/fmt) command for a rust-based Solidity Code formatter.
@@ -111,19 +115,16 @@ used by Foundry's [forge fmt](https://github.com/foundry-rs/foundry/tree/master/
 
 This is the semantic analysis stage. The parse tree is validated, and diagnostics
 (errors and warnings) are generated for invalid syntax. The output of this
-stage is a fully decorated AST of the source code.
+stage is a fully decorated Abstract Syntax Tree (AST) of the source code.
 
-This stage is used by the Solang language server, which is used by the
-[Visual Studio Code Solang Solidity Compiler extension](https://marketplace.visualstudio.com/items?itemName=Solang.Solang). This extension gives squiggly lines
-for errors and warnings, and hover information when hovering over e.g.
-variables in Solidity.  This was developed under the
+The sema stage is the essential piece of the Solang language server, which powers the [Visual Studio Code Solang Solidity Compiler extension](https://marketplace.visualstudio.com/items?itemName=Solang.Solang). This extension gives squiggly lines
+for errors and warnings, and information for tokens (e.g. variables) when hovering over them.  This was developed under the
 first [Hyperledger Mentorship](https://wiki.hyperledger.org/display/INTERN/Create+a+new+Solidity+Language+Server+%28SLS%29+using+Solang+Compiler).
 
-## Codegen
+## Code generation
 
 This stage transforms the AST into a control flow graph (CFG). Solang uses its
-own intermediate representation of the code in CFG form. The advantage of
-this is that we can do flow analysis passes on a higher level than LLVM
+own intermediate representation of the code in CFG form. The advantage is that we can do flow analysis passes on a higher level than LLVM
 can do. For example, accessing state on a blockchain is expensive and we
 remove redundant state stores or state loads from the generated contract code. Here is
 an [overview of all the passes Solang has](https://Solang.readthedocs.io/en/latest/optimizer.html).
@@ -146,9 +147,7 @@ is then linked using the LLVM linker into the final file.
 
 ## Testing
 
-There is a mock implementation of the Solana, Substrate, ewasm which are uses
-for many tests. There are also integration tests which use the actual chain
-and test end to end: compile solidity, deploy it to a node of the blockchain
+There is a mock implementation of the Solana, Substrate, ewasm, that serve to implement runtime tests and assert the correctness of the compiler's output. There are also integration tests which use the actual chain for end-to-end testing: compile solidity, deploy it to a node of the blockchain
 (running in a container), and call various contract functions.
 
 # Effort and Resources
@@ -165,10 +164,13 @@ Solana Labs:
 Parity Tech:
 - Cyrill Leutwiler [<bigcyrill@hotmail.com>](mailto:bigcyrill@hotmail.com)
 
+
+It is expected that the integration with Solana end by the end of 2022, attracting more users and more relevance for the project. As the compatibility with both Parity and Solana matures, the development focus is supposedly shifting to performance improvements and new features to the Solidity language.
+
 # How To
 
 The source code is hosted on [github](https://github.com/hyperledger-labs/Solang)
-and  there is [documentation](https://Solang.readthedocs.io/en/latest/).
+and the [documentation](https://Solang.readthedocs.io/en/latest/) is extensive.
 There is documentation on how to [run Solang on the command line](https://Solang.readthedocs.io/en/latest/running.html),
 and blockchain specific instructions for [Solana](https://solang.readthedocs.io/en/latest/targets/solana.html),
 [Substrate](https://solang.readthedocs.io/en/latest/targets/substrate.html), and

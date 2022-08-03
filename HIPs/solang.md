@@ -73,8 +73,8 @@ A new compiler, written from scratch, like Solang, offers the following advantag
 - It can target any blockchain, not just Ethereum.
 - It generates efficient code using the world-class LLVM compiler backend.
 - The Solidity language can be extended to support blockchain specific features.
-- The development is streamlined to only a frontend compiler, which deals with parsing, semantic analysis and intermediate
-  code generation.
+- The development is streamlined to only a frontend compiler, which deals with
+  parsing, semantic analysis and intermediate code generation.
 
 There is a similar Solidity compiler project, called
 [SOLL](https://github.com/second-state/soll)
@@ -174,6 +174,9 @@ attracting more users and more relevance for the project. As the compatibility w
 both Parity and Solana matures, the development focus is supposedly shifting to
 performance improvements and new features to the Solidity language.
 
+The Web3 Foundation funds gitcoin bounties for
+[certain issues](https://github.com/hyperledger-labs/solang/issues?q=is%3Aissue++label%3Abounty-M%2Cbounty-S%2Cbounty-L). These are small bounties (about 400US$) for small issues.
+
 # How To
 
 The source code is hosted on [github](https://github.com/hyperledger-labs/Solang)
@@ -186,6 +189,63 @@ and blockchain specific instructions for [Solana](https://solang.readthedocs.io/
 # References
 
 N/A
+
+# How does Hyperledger Solang meet the incubation entry considerations?
+### Codebase
+* _Code should exist as open source software in some form. Previous accepted projects have come up through labs (e.g., Cactus, Ursa); while others previously had stand alone governance prior to joining (e.g., Besu)._
+
+  **Solang has been in Hyperledger Labs since December, 2018. This is where the project started.**
+
+* _DCO sign off should exists in the code repository. If not 100% ready, the code must be capable of becoming compliant upon entry (i.e., squash commit)._
+
+  **Solang has required DCO signoffs since entry into the Labs**
+
+### Maintainers
+* _The project should have multiple maintainers. These maintainers need not be from different companies; however, having maintainers from different companies is seen as a positive sign. Proposals with only one maintainer have been rejected by prior TSCs._
+
+  **The maintainers can be found listed in [MAINTAINERS.md](https://github.com/hyperledger-labs/solang/blob/main/MAINTAINERS.md). Multiple companies are represented in the list.**
+
+* _The project should have demonstrable examples of POC/production uses publicly available._
+
+  **Solang is being used for multiple engagements, none of them public yet. One engagement is aiming for production in the October 2022.**
+
+* _The project should have the backing of more than one organization/individuals (i.e., the project proposers should be able to demonstrate significant, long term contribution in codebase)._
+
+  **There have been commits from at least 23 separate individuals during its lifetime.**
+
+### Community
+
+* _The TSC is more likely to accept projects that have contributors familiar with open source practices. Participating in existing projects or starting in Hyperledger Labs is a great place to grow this experience._
+
+  **As mentioned previously, Solang has been operating in an open source model since being brought into Hyperledger Labs in 2018. Solang also utilizes all of the Hyperledger community channels for answering questions and hosting meetings. We have a daily public call and
+  use github and discord.**
+
+### Sponsors
+
+* _Sponsors are advocates for the project. There should be more than one sponsor, and they should be from different organizations. They may or may not be committing resources to the project._
+
+  **Multiple sponsors exist for the project as listed at the top of this document, including sponsors who are contributing and using solang.**
+
+### Legal
+* _Trademark concerns – project names should not be trademarked by a contributing company or if it is, then the trademark will need to be handed over to Hyperledger. Project names must be approved by the Hyperledger marketing committee_
+
+  **We would like the Hyperledger marketing committee to propose a name for the project.**
+
+* _Projects do not require a name prior to being submitted._
+
+  **We would like the Hyperledger marketing committee to propose a name for the project.**
+
+* _Codebase should be Apache 2 licensable, without encumbrances_
+    * _Non-Apache 2 licensed code is possible, but requires Governing board approval (Section 12 subsection d of the Hyperledger Charter)_
+    * _Special examination should be given to copyleft and non-licensed code._
+    * _Required patent licensing issues have prevented projects from entering Incubation._
+    * _GPL licensing issues have prevented projects from entering Incubation._
+
+  **The source code is Apache 2 licensed.**
+
+* _If code does not already have copyright, the code should be modified to include copyright as per Copyright and License Policy prior to being brought into Hyperledger._
+
+  **The team is working on adding the copyright information to the files.**
 
 # Closure
 

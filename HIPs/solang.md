@@ -217,8 +217,7 @@ N/A
 
 * _The TSC is more likely to accept projects that have contributors familiar with open source practices. Participating in existing projects or starting in Hyperledger Labs is a great place to grow this experience._
 
-  **As mentioned previously, Solang has been operating in an open source model since being brought into Hyperledger Labs in 2018. Solang also utilizes all of the Hyperledger community channels for answering questions and hosting meetings. We have a daily public call and
-  use github and discord.**
+  **As mentioned previously, Solang has been operating in an open source model since being brought into Hyperledger Labs in 2018. Solang also utilizes all of the Hyperledger community channels for answering questions and hosting meetings. We have a daily public call, use github, and discord.**
 
 ### Sponsors
 
@@ -229,11 +228,11 @@ N/A
 ### Legal
 * _Trademark concerns – project names should not be trademarked by a contributing company or if it is, then the trademark will need to be handed over to Hyperledger. Project names must be approved by the Hyperledger marketing committee_
 
-  **We would like the Hyperledger marketing committee to propose a name for the project.**
+  **There is no trademark that we are aware of for solang. We would the project to be called either Hyperledger Solang or we would like the Hyperledger marketing committee to propose a name for the project.**
 
 * _Projects do not require a name prior to being submitted._
 
-  **We would like the Hyperledger marketing committee to propose a name for the project.**
+  **Hyperledger Solang for now but we are open to suggestions. The idea behind solang is many languages are called *something*-lang, golang or clang.**
 
 * _Codebase should be Apache 2 licensable, without encumbrances_
     * _Non-Apache 2 licensed code is possible, but requires Governing board approval (Section 12 subsection d of the Hyperledger Charter)_

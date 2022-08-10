@@ -78,12 +78,12 @@ A new compiler, written from scratch, like Solang, offers the following advantag
 
 There is a similar Solidity compiler project, called
 [SOLL](https://github.com/second-state/soll)
-but development has stalled on this project. There is also the
+but its development has stalled. There is also the
 [Ethereum Solidity compiler](https://github.com/ethereum/solidity/).
 
 # Status
 
-Solang can virtually parse anything Solc can and generate code for the majority of Solidity construcuts. The maintainers are focused on providing full compatibility for Solidity on both Solana and Polkadot blockchains. There is a tentative roadmap available on the repository's [README file](https://github.com/hyperledger-labs/solang#tentative-roadmap).
+Solang can virtually parse anything Solc can and generate code for the majority of Solidity constructs. The maintainers are focused on providing full compatibility for Solidity on both Solana and Polkadot blockchains. There is a tentative roadmap available on the repository's [README file](https://github.com/hyperledger-labs/solang#tentative-roadmap).
 
 Improvements in performance and code generation are gradual and the project has mainly attracted Hyperledger mentees to work on such tasks.
 
@@ -107,7 +107,7 @@ The compiler has the following stages:
 The parser using an LR(1) parser generator and a hand-written lexer. This
 component has been spun out into its own rust crate
 [Solang-parser](https://crates.io/crates/Solang-parser).
-The parser has been tested against a huge corpus of Solidity test contracts,
+It has been tested against a huge corpus of Solidity test contracts,
 including the ethereum solidity's own testsuite, which runs on Solang CI.
 
 This crate is being
@@ -151,7 +151,7 @@ is then linked using the LLVM linker into the final file.
 
 There is a mock implementation of the Solana, Substrate, ewasm, that serve to
 implement runtime tests and assert the correctness of the compiler's output.
-There are also integration tests which use the actual chain for end-to-end testing:
+There are also integration tests, which use the actual chain for end-to-end testing:
 compile solidity, deploy it to a node of the blockchain (running in a container),
 and call various contract functions.
 
@@ -169,7 +169,7 @@ Solana Labs:
 Parity Tech:
 - Cyrill Leutwiler [<bigcyrill@hotmail.com>](mailto:bigcyrill@hotmail.com)
 
-It is expected that the integration with Solana will finish end by the end of 2022,
+It is expected that the integration with Solana be completed by the end of 2022,
 attracting more users and more relevance for the project. As the compatibility with
 both Parity and Solana matures, the development focus is supposedly shifting to
 performance improvements and new features to the Solidity language.
